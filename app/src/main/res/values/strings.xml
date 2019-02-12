@@ -40,12 +40,16 @@
     <string name="Title_HomeDelivery2">Wait a Little bit for verification</string>
     <string name="Intro_HomeDelivery2">We will Verify Your Phone Number by Sending OTP to your given Mobile Number. Please Enter OTP quickly after received. \nThank You !!</string>
     <string name="Intro_HomeDelivery3">Your Verification is Successful.We will contact you for further confirmation. The Order ID given below is the key before delivery. Thanks for Booking Order.</string>
+    <string name="Intro_HomeDelivery4">This Service needs further confirmation with advance payment. Please make payment by pressing pay button, Otherwise order will considered as provisional(Not confirmed). Thank You</string>
+    <string name="Title_HomeDelivery4">Make Payment</string>
 
     <string name="Title_BookBanquet1">Welcome to Banquet Booking Service</string>
     <string name="Intro_BookBanquet1">  This is the Introduction where customer will get to know the significance and necessity of Banquet Booking Service. Please Enter the following Information :</string>
     <string name="Title_BookBanquet2">Wait a Little bit for verification</string>
     <string name="Intro_BookBanquet2">We will Verify Your Phone Number by Sending OTP to your given Mobile Number. Please Enter OTP quickly after received. \nThank You !!</string>
-    <string name="Intro_BookBanquet3">Your Verification is Successful.We will contact you for further confirmation. The Booking ID given below is the key before arrival. Thanks for Booking Table</string>
+    <string name="Intro_BookBanquet3">Your Verification is Successful.We will contact you for further confirmation. The Booking ID given below is the key before arrival. Thanks for Booking Banquet</string>
+    <string name="Intro_BookBanquet4">This Service needs further confirmation with advance payment. Please make payment by pressing pay button, Otherwise order will considered as provisional(Not confirmed). Thank You</string>
+    <string name="Title_BookBanquet4">Make Payment</string>
 
     <string name="Hint_Name">Enter Your Name here</string>
     <string name="Hint_MobileNo">Enter Your Mobile Number here</string>

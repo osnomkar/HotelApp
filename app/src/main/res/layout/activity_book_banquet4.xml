@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -7,18 +8,40 @@
 
     <TextView
         android:id="@+id/txvTitle.BanquetBook4"
-        android:text="This is Banq4"
+        android:text="@string/Title_BookBanquet4"
         android:textSize="@dimen/Title_textSize"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:gravity="center"/>
+
+    <TextView
+        android:id="@+id/txvIntro.BanquetBook4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txvTitle.BanquetBook4"
+        android:text="@string/Intro_BookBanquet4"
+        android:textSize="@dimen/Intro_textSize"
+        android:gravity="center"/>
 
     <Button
         android:id="@+id/btnPay.BanquetBook4"
-        android:layout_below="@+id/txvTitle.BanquetBook4"
+        android:layout_below="@+id/txvIntro.BanquetBook4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="PAY"
-        android:textSize="50sp" />
+        android:layout_marginTop="25dp"
+        android:text="@string/pay"
+        android:textSize="50sp"
+        />
+
+    <Button
+        android:id="@+id/btnCancel.BanquetBook4"
+        android:layout_below="@+id/btnPay.BanquetBook4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:text="@string/cancel"
+        android:textSize="50sp"
+        />
 
 
 

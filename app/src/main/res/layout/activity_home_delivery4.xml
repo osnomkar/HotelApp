@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -8,7 +8,7 @@
 
     <TextView
         android:id="@+id/txvTitle.HomeDelivery4"
-        android:text="Make Payment"
+        android:text="@string/Title_HomeDelivery4"
         android:textSize="@dimen/Title_textSize"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -19,7 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/txvTitle.HomeDelivery4"
-        android:text="Home Delivery service have "
+        android:text="@string/Intro_HomeDelivery4"
         android:textSize="@dimen/Intro_textSize"
         android:gravity="center"/>
 
@@ -28,7 +28,18 @@
         android:layout_below="@+id/txvIntro.HomeDelivery4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
         android:text="@string/pay"
+        android:textSize="50sp"
+        />
+
+    <Button
+        android:id="@+id/btnCancel.HomeDelivery4"
+        android:layout_below="@+id/btnPay.HomeDelivery4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:text="@string/cancel"
         android:textSize="50sp"
         />
 

@@ -18,13 +18,13 @@ import java.util.Calendar;
 
 public class BanquetBook1 extends AppCompatActivity {
 
-    EditText txtName, txtMobileNo, txtPurpose;
+    EditText txtName, txtMobileNo, txtEmail, txtPurpose;
     Button btnDate, btnTime, btnSubmit, btnCancel;
     TextView txvShowDate, txvShowTime;
 
     Calendar calendar;
 
-    String Name, MobileNo, Purpose, Time, Date, User;
+    String Name, MobileNo, Email, Purpose, Time, Date, User;
 
     public static final String TAG = BanquetBook1.class.getCanonicalName(),
                                 KEY_DATA = "keyData";
@@ -42,6 +42,7 @@ public class BanquetBook1 extends AppCompatActivity {
 
         txtName = findViewById(R.id.txtName_BanquetBook1);
         txtMobileNo = findViewById(R.id.txtMobileNo_BanquetBook1);
+        txtEmail = findViewById(R.id.txtEmail_BanquetBook1);
         txtPurpose = findViewById(R.id.txtPurpose_BanquetBook1);
 
         txvShowDate = findViewById(R.id.txvShowDate_BanquetBook1);
@@ -60,7 +61,8 @@ public class BanquetBook1 extends AppCompatActivity {
     }
 
     private void onCancel(View view) {
-        startActivity(new Intent(this,Home_customer.class));
+        Intent intent = new Intent(this,Home_customer.class);
+        startActivityForResult(intent,401);
     }
 
     private void onSubmit(View view) {
@@ -68,11 +70,13 @@ public class BanquetBook1 extends AppCompatActivity {
         Name = txtName.getText().toString();
         MobileNo = txtMobileNo.getText().toString();
         Purpose = txtPurpose.getText().toString();
+        Email = txtEmail.getText().toString();
         String d = txvShowDate.getText().toString();
         String t = txvShowTime.getText().toString();
 
         if(     Name.isEmpty()      ||
                 MobileNo.isEmpty()  ||
+                Email.isEmpty()  ||
                 Purpose.isEmpty()   ||
                 d.isEmpty()         ||
                 t.isEmpty()
@@ -83,6 +87,7 @@ public class BanquetBook1 extends AppCompatActivity {
             ArrayList<String> data = new ArrayList<>();
             data.add(Name);
             data.add(MobileNo);
+            data.add(Email);
             data.add(Date);
             data.add(Time);
             data.add(Purpose);

@@ -20,7 +20,7 @@ public class BanquetBook3 extends AppCompatActivity {
     int RegId;
 
     Button btnCancel, btnSave;
-    TextView txvName,txvMobileNo,txvTime,txvDate,txvPurpose,txvRegId;
+    TextView txvName,txvMobileNo,txvEmail,txvTime,txvDate,txvPurpose,txvRegId;
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
 
@@ -40,6 +40,7 @@ public class BanquetBook3 extends AppCompatActivity {
 
         txvName = findViewById(R.id.txvName_BanquetBook3);
         txvMobileNo = findViewById(R.id.txvMobileNo_BanquetBook3);
+        txvEmail = findViewById(R.id.txvEmail_BanquetBook3);
         txvTime = findViewById(R.id.txvShowTime_BanquetBook3);
         txvDate = findViewById(R.id.txvShowDate_BanquetBook3);
         txvPurpose = findViewById(R.id.txvPurpose_BanquetBook3);
@@ -47,12 +48,13 @@ public class BanquetBook3 extends AppCompatActivity {
 
         txvName.setText(data.get(0));
         txvMobileNo.setText(data.get(1));
+        txvEmail.setText(data.get(2));
         txvDate.setText(data.get(3));
         txvTime.setText(data.get(4));
         txvPurpose.setText(""+data.get(5) );
 
         data.add(""+RegId);
-        txvRegId.setText(""+data.get(6));
+        txvRegId.setText(""+data.get(7));
 
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference();
@@ -63,15 +65,26 @@ public class BanquetBook3 extends AppCompatActivity {
         btnSave.setOnClickListener(this :: onSave);
         btnCancel.setOnClickListener(this :: onCancel);
 
+        /*
+        0. Name
+        1. MobileNo
+        2. Email
+        3. Date
+        4. Time
+        5. Purpose
+        6. User
+        7. RegID
+         */
     }
 
     private void onCancel(View view) {
-        startActivity(new Intent(this,Login.class));
+        Intent intent = new Intent(this,Login.class);
+        startActivityForResult(intent,403);
     }
 
     private void onSave(View view) {
 
-        database_HomeDelivery db_hd = new database_HomeDelivery(
+        database_BanquetBooking db_bb = new database_BanquetBooking(
                 data.get(0),
                 data.get(1),
                 data.get(2),
@@ -79,11 +92,12 @@ public class BanquetBook3 extends AppCompatActivity {
                 data.get(4),
                 data.get(5),
                 data.get(6),
-                data.get(7));
+                data.get(7)
+        );
 
         (databaseReference.child("BanquetBooking"))
                 .child(data.get(7))
-                .setValue(db_hd);
+                .setValue(db_bb);
 
         Toast.makeText(this,"Your Order Booked Successfully",Toast.LENGTH_LONG).show();
 

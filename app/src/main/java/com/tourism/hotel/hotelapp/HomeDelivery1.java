@@ -80,7 +80,8 @@ public class HomeDelivery1 extends AppCompatActivity {
     }
 
     private void onCancel(View view) {
-        startActivity(new Intent(this,Home_customer.class));
+        Intent intent = new Intent(this,Home_customer.class);
+        startActivityForResult(intent, 301);
     }
 
     //Validate and Navigate Customers Details

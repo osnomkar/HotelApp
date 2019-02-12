@@ -49,6 +49,16 @@
             android:hint="@string/Hint_MobileNo"
             android:textSize="20sp" />
 
+        <EditText
+            android:id="@+id/txtEmail.BanquetBook1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="3dp"
+            android:layout_marginTop="5dp"
+            android:inputType="textEmailAddress"
+            android:hint="@string/Hint_Email"
+            android:textSize="20sp" />
+
         <android.support.v7.widget.AppCompatButton
             android:id="@+id/btnDate.BanquetBook1"
             android:text="@string/Select_date"

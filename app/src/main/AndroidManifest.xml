@@ -19,7 +19,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".BanquetBook4"></activity>
+        <activity android:name=".FoodParcel3"></activity>
+        <activity android:name=".BanquetBook5" />
+        <activity android:name=".BanquetBook4" />
         <activity android:name=".BanquetBook3" />
         <activity android:name=".BanquetBook2" />
         <activity android:name=".HomeDelivery6" />

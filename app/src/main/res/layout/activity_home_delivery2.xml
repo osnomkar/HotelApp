@@ -43,5 +43,14 @@
         android:text="@string/verify"
         android:textSize="35sp" />
 
+    <Button
+        android:id="@+id/btnCancel.HomeDelivery2"
+        android:layout_below="@+id/btnVerify.HomeDelivery2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_marginHorizontal="20dp"
+        android:text="@string/cancel"
+        android:textSize="35sp" />
 
 </RelativeLayout>

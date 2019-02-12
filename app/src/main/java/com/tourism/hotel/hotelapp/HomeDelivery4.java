@@ -46,6 +46,14 @@ public class HomeDelivery4 extends AppCompatActivity {
         */
 
         findViewById(R.id.btnPay_HomeDelivery4).setOnClickListener(this :: onPay);
+        findViewById(R.id.btnPay_HomeDelivery4).setOnClickListener(this :: onCancel);
+    }
+
+    private void onCancel(View view) {
+
+        Intent intent = new Intent(this, Home_customer.class);
+        startActivityForResult(intent, 304);
+
     }
 
     private void onPay(View view) {

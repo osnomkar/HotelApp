@@ -34,14 +34,14 @@ public class BanquetBook4 extends AppCompatActivity {
         data = bundle.getStringArrayList(BanquetBook3.KEY);
 
         /*
-         * 0.Name
-         * 1.MobileNo
-         * 2.Address
-         * 3.Date
-         * 4.Time
-         * 5.Food
-         * 6.User
-         * 7.RegId
+        0. Name
+        1. MobileNo
+        2. Email
+        3. Date
+        4. Time
+        5. Purpose
+        6. User
+        7. RegID
          */
 
         findViewById(R.id.btnPay_BanquetBook4).setOnClickListener(this :: onPay);
@@ -49,11 +49,11 @@ public class BanquetBook4 extends AppCompatActivity {
 
     private void onPay(View view) {
         callInstamojoPay(
-                "osnomkar@gmail.com",
-                "9326784153",
+                data.get(2),
+                data.get(1),
                 "200",
-                "Test Purpose",
-                "Buyers Name"
+                "Banquet Booking Test",
+                data.get(0)
         );
 
         mt("Pay button started");
@@ -88,7 +88,10 @@ public class BanquetBook4 extends AppCompatActivity {
             public void onSuccess(String response) {
                 Toast.makeText(getApplicationContext(), response, Toast.LENGTH_LONG)
                         .show();
-                Intent intent = new Intent(getApplicationContext(), HomeDelivery5.class);
+                Intent intent = new Intent(getApplicationContext(), BanquetBook5.class);
+                Bundle bundle = new Bundle();
+                bundle.putStringArrayList(BanquetBook4.KEY,data);
+                intent.putExtras(bundle);
                 startActivity(intent);
             }
 

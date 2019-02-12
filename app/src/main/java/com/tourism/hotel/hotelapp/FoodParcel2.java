@@ -107,7 +107,7 @@ public class FoodParcel2 extends AppCompatActivity {
 
                                 mt("Verification Successful");
 
-                                Intent intent = new Intent(this,TableBooking3.class);
+                                Intent intent = new Intent(this,FoodParcel3.class);
                                 Bundle bundle = new Bundle();
                                 bundle.putStringArrayList(KEY,data);
                                 intent.putExtras(bundle);

@@ -40,6 +40,12 @@ public class HomeDelivery2 extends AppCompatActivity {
         hdAuth = FirebaseAuth.getInstance();
 
         findViewById(R.id.btnVerify_HomeDelivery2).setOnClickListener(this :: onVerify);
+        findViewById(R.id.btnCancel_HomeDelivery2).setOnClickListener(this :: onCancel);
+    }
+
+    private void onCancel(View view) {
+        Intent intent = new Intent(this, Home_customer.class);
+        startActivityForResult(intent,302);
     }
 
     private void onVerify(View view) {
