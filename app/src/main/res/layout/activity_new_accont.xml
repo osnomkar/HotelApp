@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".NewAccont">
+
+    <TextView
+        android:id="@+id/txvTitle.NewAccount"
+        android:gravity="center"
+        android:text="@string/Create_New_Account"
+        android:textSize="30sp"
+        android:layout_width="match_parent"
+        android:layout_height="150sp" />
+
+    <ProgressBar
+        android:id="@+id/pb.NewAccount"
+        android:layout_below="@+id/txvTitle.NewAccount"
+        android:layout_width="match_parent"
+        android:layout_height="70dp" />
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/tilEmail.NewAccount"
+        android:layout_marginVertical="15sp"
+        android:layout_below="@+id/pb.NewAccount"
+        android:layout_height="70dp"
+        android:layout_width="match_parent"
+        android:layout_marginTop="3dp"
+        android:layout_marginBottom="3dp">
+        <EditText
+            android:id="@+id/txtEmail.NewAccount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
+            android:hint="@string/enter_email_here"
+            android:textSize="30sp"/>
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_marginVertical="15sp"
+        android:id="@+id/tilPassword.NewAccount"
+        android:layout_below="@+id/tilEmail.NewAccount"
+        android:layout_height="70dp"
+        android:layout_width="match_parent"
+        android:layout_marginTop="3dp"
+        android:layout_marginBottom="3dp">
+        <EditText
+            android:id="@+id/txtPassword.NewAccount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:hint="@string/enter_password_here"
+            android:textSize="30sp"/>
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.v7.widget.AppCompatButton
+        android:id="@+id/btnSignUp.NewAccount"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_below="@+id/tilPassword.NewAccount"
+        android:text="@string/sign_up"/>
+
+</RelativeLayout>

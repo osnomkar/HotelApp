@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".HomeDelivery5">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/txvTitle.HomeDelivery5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/Thank_booking"
+            android:textSize="@dimen/Title_textSize"
+            android:gravity="center" />
+        <TextView
+            android:id="@+id/txvIntro.HomeDelivery5"
+            android:layout_below="@+id/txvTitle.HomeDelivery5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:text="@string/Intro_HomeDelivery3"
+            android:textSize="@dimen/Intro_textSize"
+            android:gravity="center" />
+
+        <RelativeLayout
+            android:id="@+id/lytData.HomeDelivery5"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/txvIntro.HomeDelivery5">
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/txvName.HomeDelivery5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10sp"
+                android:layout_marginVertical="10sp"
+                android:textSize="30sp"
+                />
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/txvMobileNo.HomeDelivery5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10sp"
+                android:layout_marginVertical="10sp"
+                android:layout_below="@+id/txvName.HomeDelivery5"
+                android:textSize="30sp"
+                />
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/txvEmail.HomeDelivery5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10sp"
+                android:layout_marginVertical="10sp"
+                android:layout_below="@+id/txvMobileNo.HomeDelivery5"
+                android:textSize="30sp"
+                />
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/txvShowTime.HomeDelivery5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10sp"
+                android:layout_marginVertical="10sp"
+                android:layout_below="@+id/txvEmail.HomeDelivery5"
+                android:textSize="30sp"
+                />
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/txvShowDate.HomeDelivery5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10sp"
+                android:layout_marginVertical="10sp"
+                android:layout_below="@+id/txvShowTime.HomeDelivery5"
+                android:textSize="30sp"
+                />
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/txvShowFood.HomeDelivery5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10sp"
+                android:layout_marginVertical="10sp"
+                android:layout_below="@+id/txvShowDate.HomeDelivery5"
+                android:textSize="30sp"
+                />
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/txvAddress.HomeDelivery5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10sp"
+                android:layout_marginVertical="10sp"
+                android:layout_below="@+id/txvShowFood.HomeDelivery5"
+                android:textSize="30sp"
+                />
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/txvRegId.HomeDelivery5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10sp"
+                android:layout_marginVertical="10sp"
+                android:layout_below="@+id/txvAddress.HomeDelivery5"
+                android:textSize="30sp"
+                />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_below="@+id/lytData.HomeDelivery5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="1"
+            >
+            <Button
+                android:id="@+id/btnCancel.HomeDelivery5"
+                android:layout_weight="0.5"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="10dp"
+                android:text="@string/cancel"
+                android:textSize="30sp"
+                />
+            <Button
+                android:id="@+id/btnSave.HomeDelivery5"
+                android:layout_weight="0.5"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="10dp"
+                android:text="@string/save"
+                android:textSize="30sp"
+                />
+        </LinearLayout>
+
+
+    </RelativeLayout>
+</ScrollView>

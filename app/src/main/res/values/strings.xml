@@ -1,0 +1,73 @@
+<resources>
+    <string name="app_name">HotelApp</string>
+    <string name="welcome">Welcome</string>
+    <string name="title_activity_login">Sign in</string>
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password (optional)</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."
+    </string>
+    <string name="welcome_to_hotel_services">Welcome to Hotel Services</string>
+
+    <string name="enter_email_here">Enter Email here</string>
+
+    <string name="enter_password_here">Enter Password here</string>
+    <string name="login">Login</string>
+    <string name="New_account">No account yet? Create one</string>
+    <string name="Create_New_Account">Create Your New Account Here</string>
+    <string name="sign_up">Sign Up</string>
+
+    <string name="Title_tableBooking1">Welcome to Table Booking Service</string>
+    <string name="Intro_tableBooking1">  This is the Introduction where customer will get to know the significance and necessity of Table Booking Service. Please Enter the following Information :</string>
+    <string name="Title_tableBooking2">Wait a Little bit for verification</string>
+    <string name="Intro_tableBooking2">We will Verify Your Phone Number by Sending OTP to your given Mobile Number. Please Enter OTP quickly after received. \nThank You !!</string>
+    <string name="Intro_tableBooking3">Your Verification is Successful.We will contact you for further confirmation. The Booking ID given below is the key before arrival. Thanks for Booking Table</string>
+
+    <string name="Title_FoodParcel1">Welcome to Food Parcel Service</string>
+    <string name="Intro_FoodParcel1"> This is the Introduction where customer will get to know the significance and necessity of Food Parcel Service. Please Enter the following Information :</string>
+    <string name="Title_FoodParcel2">Wait a Little bit for verification</string>
+    <string name="Intro_FoodParcel2">We will Verify Your Phone Number by Sending OTP to your given Mobile Number. Please Enter OTP quickly after received. \nThank You !!</string>
+
+    <string name="Title_HomeDelivery1">Welcome to Home Delivery Service</string>
+    <string name="Intro_HomeDelivery1"> This is the Introduction where customer will get to know the significance and necessity of Home Delivery Service. Please Enter the following Information :</string>
+    <string name="Title_HomeDelivery2">Wait a Little bit for verification</string>
+    <string name="Intro_HomeDelivery2">We will Verify Your Phone Number by Sending OTP to your given Mobile Number. Please Enter OTP quickly after received. \nThank You !!</string>
+    <string name="Intro_HomeDelivery3">Your Verification is Successful.We will contact you for further confirmation. The Order ID given below is the key before delivery. Thanks for Booking Order.</string>
+
+    <string name="Title_BookBanquet1">Welcome to Banquet Booking Service</string>
+    <string name="Intro_BookBanquet1">  This is the Introduction where customer will get to know the significance and necessity of Banquet Booking Service. Please Enter the following Information :</string>
+    <string name="Title_BookBanquet2">Wait a Little bit for verification</string>
+    <string name="Intro_BookBanquet2">We will Verify Your Phone Number by Sending OTP to your given Mobile Number. Please Enter OTP quickly after received. \nThank You !!</string>
+    <string name="Intro_BookBanquet3">Your Verification is Successful.We will contact you for further confirmation. The Booking ID given below is the key before arrival. Thanks for Booking Table</string>
+
+    <string name="Hint_Name">Enter Your Name here</string>
+    <string name="Hint_MobileNo">Enter Your Mobile Number here</string>
+    <string name="Hint_PurposeBanquet">Enter Your Purpose of Banquet</string>
+    <string name="Hint_Email">Enter Your Email here</string>
+
+    <string name="Select_time">Select Time</string>
+    <string name="Select_date">Select Date</string>
+    <string name="Select_Food">Select Food</string>
+    <string name="Hint_NoGuest">Enter Number of Guest here</string>
+    <string name="submit">Submit</string>
+    <string name="Hint_Address">Enter Address Here</string>
+    <string name="welcome_to_hotel">Welcome to Hotel</string>
+    <string name="Hour"><![CDATA[Hour =>]]></string>
+    <string name="Minute"><![CDATA[Minute =>]]></string>
+    <string name="OTP">Enter OTP here</string>
+    <string name="verify">Verify</string>
+    <string name="Thank_booking">Thank You So much for the Booking</string>
+    <string name="Thank_verification">Thank You So much for the verification</string>
+    <string name="cancel">Cancel</string>
+    <string name="save">Save</string>
+    <string name="pay">PAY</string>
+
+
+</resources>

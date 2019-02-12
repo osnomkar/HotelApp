@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="fill_parent"
+    tools:context=".HomeDelivery1"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/txvTitle.HomeDelivery1"
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginBottom="5dp"
+            android:text="@string/Title_HomeDelivery1"
+            android:gravity="center"
+            android:textSize="@dimen/Title_textSize" />
+
+
+        <TextView
+            android:id="@+id/txvIntro.HomeDelivery1"
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:text="@string/Intro_HomeDelivery1"
+            android:gravity="fill_vertical"
+            android:textSize="@dimen/Intro_textSize" />
+
+        <EditText
+            android:id="@+id/txtName.HomeDelivery1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="3dp"
+            android:layout_marginTop="5dp"
+            android:inputType="text"
+            android:hint="@string/Hint_Name"
+            android:textSize="20sp" />
+        <EditText
+            android:id="@+id/txtMobileNo.HomeDelivery1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="3dp"
+            android:layout_marginTop="5dp"
+            android:inputType="phone"
+            android:hint="@string/Hint_MobileNo"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/txtEmail.HomeDelivery1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="3dp"
+            android:layout_marginTop="5dp"
+            android:inputType="textEmailAddress"
+            android:hint="@string/Hint_Email"
+            android:textSize="20sp" />
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/btnDate.HomeDelivery1"
+            android:text="@string/Select_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"/>
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/btnTime.HomeDelivery1"
+            android:text="@string/Select_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"/>
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/btnFood.HomeDelivery1"
+            android:text="@string/Select_Food"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"/>
+
+        <EditText
+            android:id="@+id/txtAddress.HomeDelivery1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="3dp"
+            android:layout_marginTop="5dp"
+            android:inputType="text"
+            android:hint="@string/Hint_Address"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/txvShowDate.HomeDelivery1"
+            android:textSize="30sp"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/txvShowTime.HomeDelivery1"
+            android:textSize="30sp"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/txvShowFood.HomeDelivery1"
+            android:textSize="30sp"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="1">
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/btnCancel.HomeDelivery1"
+                android:text="@string/cancel"
+                android:layout_width="0sp"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:layout_weight="0.5"/>
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/btnSubmit.HomeDelivery1"
+                android:text="@string/submit"
+                android:layout_width="0sp"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:layout_weight="0.5"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>

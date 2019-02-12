@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "422288910358",
+    "firebase_url": "https://hoteltourism-6cbf4.firebaseio.com",
+    "project_id": "hoteltourism-6cbf4",
+    "storage_bucket": "hoteltourism-6cbf4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:422288910358:android:561cad06be84882b",
+        "android_client_info": {
+          "package_name": "com.tourism.hotel.hotelapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "422288910358-sf6eshvvma0bqfb28eilu8uonhrukfk5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.tourism.hotel.hotelapp",
+            "certificate_hash": "ffb985e95247294ab51a0bd5c38579dcd2a49c45"
+          }
+        },
+        {
+          "client_id": "422288910358-cefffopi789rsb3up2ee06ote1fjm6lf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDj94woYQekXLcn-TjOD9IgCi1KiK7hmHs"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "422288910358-cefffopi789rsb3up2ee06ote1fjm6lf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

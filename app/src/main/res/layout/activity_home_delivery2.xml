@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".HomeDelivery2">
+
+    <TextView
+        android:id="@+id/txvTitle.HomeDelivery2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/Title_HomeDelivery2"
+        android:textSize="@dimen/Title_textSize" />
+
+    <TextView
+        android:id="@+id/txvIntro.HomeDelivery2"
+        android:layout_below="@+id/txvTitle.HomeDelivery2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/Intro_HomeDelivery2"
+        android:textSize="@dimen/Intro_textSize" />
+
+    <EditText
+        android:id="@+id/txtOTP.HomeDelivery2"
+        android:layout_below="@+id/txvIntro.HomeDelivery2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:layout_marginHorizontal="20dp"
+        android:hint="@string/OTP"
+        android:textSize="45sp" />
+
+    <Button
+        android:id="@+id/btnVerify.HomeDelivery2"
+        android:layout_below="@+id/txtOTP.HomeDelivery2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_marginHorizontal="20dp"
+        android:text="@string/verify"
+        android:textSize="35sp" />
+
+
+</RelativeLayout>
