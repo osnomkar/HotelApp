@@ -1,6 +1,9 @@
 package com.tourism.hotel.hotelapp;
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -64,8 +67,8 @@ public class TableBooking3 extends AppCompatActivity {
         //Review Customer Details
         txvName.setText(data.get(0));
         txvMobileNo.setText(data.get(1));
-        txvTime.setText(data.get(2));
-        txvDate.setText(data.get(3));
+        txvDate.setText(data.get(2));
+        txvTime.setText(data.get(3));
         txvNoGuest.setText(data.get(4)+" Guests");
 
         data.add(String.valueOf(RegId));
@@ -77,28 +80,41 @@ public class TableBooking3 extends AppCompatActivity {
 
     }
 
+    /* 0.Name
+     * 1.Mobile No
+     * 2.Date
+     * 3.Time
+     * 4.NoGuest
+     * 5.UserEmail
+     * 6.RegId
+     */
+
     private void onSave(View view) {
 
-        //Init DB format
-        database_tableBooking db_tb = new database_tableBooking(
-                data.get(0),
-                data.get(1),
-                data.get(2),
-                data.get(3),
-                data.get(4),
-                data.get(5),
-                data.get(6));
+        if (isInternetAvailable()) {
 
-        //Get actual location reference
-        (databaseReference.child("TableBooking"))
-                .child(data.get(6))
-                .setValue(db_tb);
+            //Init DB format
+            database_tableBooking db_tb = new database_tableBooking(
+                    data.get(0),
+                    data.get(1),
+                    data.get(2),
+                    data.get(3),
+                    data.get(4),
+                    data.get(5),
+                    data.get(6));
 
-        Toast.makeText(this,"Your Order Booked Successfully",Toast.LENGTH_LONG).show();
+            //Get actual location reference
+            (databaseReference.child("TableBooking"))
+                    .child(data.get(6))
+                    .setValue(db_tb);
 
-        startActivity(new Intent(this,Login.class));
-        //startActivityForResult();
+            mt("Your Order Booked Successfully");
 
+            Intent intent = new Intent(this, Home_customer.class);
+            startActivityForResult(intent, 103);
+        }
+        else
+            mt("Internet not available. Please try again !!");
     }
 
     private void onCancel(View view) {
@@ -106,6 +122,23 @@ public class TableBooking3 extends AppCompatActivity {
         startActivityForResult(intent,103);
     }
 
+
+    private void mt(String msg){
+        Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
+
+    }
+
+    public boolean isInternetAvailable() {
+
+        ConnectivityManager cm =
+                (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+
+        return activeNetwork != null &&
+                activeNetwork.isConnectedOrConnecting();
+
+    }
 
     //Generate Random No
     public int generateRandom() {

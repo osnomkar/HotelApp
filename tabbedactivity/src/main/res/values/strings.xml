@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">TabbedActivity</string>
+    <string name="tab_text_1">Table Booking</string>
+    <string name="tab_text_2">Food Parcel</string>
+    <string name="tab_text_3">Home Delivery</string>
+    <string name="action_refresh">Refresh</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+    <string name="tab4">Banquet Booking</string>
+</resources>

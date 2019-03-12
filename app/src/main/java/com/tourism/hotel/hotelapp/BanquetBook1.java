@@ -2,7 +2,10 @@ package com.tourism.hotel.hotelapp;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -27,7 +30,7 @@ public class BanquetBook1 extends AppCompatActivity {
     String Name, MobileNo, Email, Purpose, Time, Date, User;
 
     public static final String TAG = BanquetBook1.class.getCanonicalName(),
-                                KEY_DATA = "keyData";
+                                KEY_DATA = "keyBB1";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,38 +70,43 @@ public class BanquetBook1 extends AppCompatActivity {
 
     private void onSubmit(View view) {
 
-        Name = txtName.getText().toString();
-        MobileNo = txtMobileNo.getText().toString();
-        Purpose = txtPurpose.getText().toString();
-        Email = txtEmail.getText().toString();
-        String d = txvShowDate.getText().toString();
-        String t = txvShowTime.getText().toString();
+        if(isInternetAvailable()){
 
-        if(     Name.isEmpty()      ||
-                MobileNo.isEmpty()  ||
-                Email.isEmpty()  ||
-                Purpose.isEmpty()   ||
-                d.isEmpty()         ||
-                t.isEmpty()
-        )
-            mt("All fields are mandatory");
-        else {
+            Name = txtName.getText().toString();
+            MobileNo = txtMobileNo.getText().toString();
+            Purpose = txtPurpose.getText().toString();
+            Email = txtEmail.getText().toString();
+            String d = txvShowDate.getText().toString();
+            String t = txvShowTime.getText().toString();
 
-            ArrayList<String> data = new ArrayList<>();
-            data.add(Name);
-            data.add(MobileNo);
-            data.add(Email);
-            data.add(Date);
-            data.add(Time);
-            data.add(Purpose);
-            data.add(User);
+                if (Name.isEmpty() ||
+                        MobileNo.isEmpty() ||
+                        Email.isEmpty() ||
+                        Purpose.isEmpty() ||
+                        d.isEmpty() ||
+                        t.isEmpty()
+                    )
+                    mt("All fields are mandatory");
+            else {
 
-            Intent intent = new Intent(this, BanquetBook2.class);
-            Bundle bundle = new Bundle();
-            bundle.putStringArrayList(KEY_DATA, data);
-            intent.putExtras(bundle);
-            startActivity(intent);
+                ArrayList<String> data = new ArrayList<>();
+                data.add(Name);
+                data.add(MobileNo);
+                data.add(Email);
+                data.add(Date);
+                data.add(Time);
+                data.add(Purpose);
+                data.add(User);
+
+                Intent intent = new Intent(this, BanquetBook2.class);
+                Bundle bundle = new Bundle();
+                bundle.putStringArrayList(KEY_DATA, data);
+                intent.putExtras(bundle);
+                startActivity(intent);
+                }
         }
+        else
+            mt("Internet not available !! Please try again");
 
     }
 
@@ -168,6 +176,18 @@ public class BanquetBook1 extends AppCompatActivity {
                 mt("Service is available for next 4 days only");
         }
     };
+
+    public boolean isInternetAvailable() {
+
+        ConnectivityManager cm =
+                (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+
+        return activeNetwork != null &&
+                activeNetwork.isConnectedOrConnecting();
+
+    }
 
     private void mt(String msg){
         Toast.makeText(this,msg,Toast.LENGTH_SHORT).show();

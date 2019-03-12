@@ -30,7 +30,7 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View v = LayoutInflater.from(viewGroup.getContext())
-                .inflate(R.layout.myitem,viewGroup,false);
+                .inflate(R.layout.mycardview,viewGroup,false);
 
         MyViewHolder vh = new MyViewHolder(v);
         return vh;
@@ -39,7 +39,7 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int i) {
 
-        ((TextView)viewHolder.itemView.findViewById(R.id.txv)).setText(dataSet.get(i));
+        ((TextView)viewHolder.itemView.findViewById(R.id.txv_name)).setText(dataSet.get(i));
 
     }
 

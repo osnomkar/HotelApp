@@ -1,8 +1,11 @@
 package com.tourism.hotel.hotelapp;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -45,18 +48,27 @@ public class BanquetBook4 extends AppCompatActivity {
          */
 
         findViewById(R.id.btnPay_BanquetBook4).setOnClickListener(this :: onPay);
+        findViewById(R.id.btnCancel_BanquetBook4).setOnClickListener(this :: onCancel);
+    }
+
+    private void onCancel(View view) {
+        Intent intent = new Intent(this, Home_customer.class);
+        startActivityForResult(intent,404);
     }
 
     private void onPay(View view) {
-        callInstamojoPay(
-                data.get(2),
-                data.get(1),
-                "200",
-                "Banquet Booking Test",
-                data.get(0)
-        );
+        if(isInternetAvailable()) {
+            callInstamojoPay(
+                    data.get(2),
+                    data.get(1),
+                    "200",
+                    "Banquet Booking Test",
+                    data.get(0)
+            );
+        }
+        else
+            mt("Internet not Available !! Please try again.");
 
-        mt("Pay button started");
     }
     private void callInstamojoPay(String email, String phone, String amount, String purpose, String buyername) {
         final Activity activity = this;
@@ -103,6 +115,17 @@ public class BanquetBook4 extends AppCompatActivity {
         };
     }
 
+    public boolean isInternetAvailable() {
+
+        ConnectivityManager cm =
+                (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+
+        return activeNetwork != null &&
+                activeNetwork.isConnectedOrConnecting();
+
+    }
 
     private void mt(String msg){
         Toast.makeText(this, msg, Toast.LENGTH_LONG).show();

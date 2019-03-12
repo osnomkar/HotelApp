@@ -34,6 +34,7 @@
     <string name="Intro_FoodParcel1"> This is the Introduction where customer will get to know the significance and necessity of Food Parcel Service. Please Enter the following Information :</string>
     <string name="Title_FoodParcel2">Wait a Little bit for verification</string>
     <string name="Intro_FoodParcel2">We will Verify Your Phone Number by Sending OTP to your given Mobile Number. Please Enter OTP quickly after received. \nThank You !!</string>
+    <string name="Intro_FoodParcel3">Your Verification is Successful.We will contact you for further confirmation. The Order ID given below is the key before arrival. Thanks for Booking Order</string>
 
     <string name="Title_HomeDelivery1">Welcome to Home Delivery Service</string>
     <string name="Intro_HomeDelivery1"> This is the Introduction where customer will get to know the significance and necessity of Home Delivery Service. Please Enter the following Information :</string>
@@ -73,5 +74,11 @@
     <string name="save">Save</string>
     <string name="pay">PAY</string>
 
+    <string name="tab_text_1">Table Booking</string>
+    <string name="tab_text_2">Food Parcel</string>
+    <string name="tab_text_3">Home Delivery</string>
+    <string name="action_refresh">Refresh</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+    <string name="tab4">Banquet Booking</string>
 
 </resources>

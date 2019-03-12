@@ -1,6 +1,9 @@
 package com.tourism.hotel.hotelapp;
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -84,28 +87,43 @@ public class BanquetBook3 extends AppCompatActivity {
 
     private void onSave(View view) {
 
-        database_BanquetBooking db_bb = new database_BanquetBooking(
-                data.get(0),
-                data.get(1),
-                data.get(2),
-                data.get(3),
-                data.get(4),
-                data.get(5),
-                data.get(6),
-                data.get(7)
-        );
+        if(isInternetAvailable()) {
+            database_BanquetBooking db_bb = new database_BanquetBooking(
+                    data.get(0),
+                    data.get(1),
+                    data.get(2),
+                    data.get(3),
+                    data.get(4),
+                    data.get(5),
+                    data.get(6),
+                    data.get(7)
+            );
 
-        (databaseReference.child("BanquetBooking"))
-                .child(data.get(7))
-                .setValue(db_bb);
+            (databaseReference.child("BanquetBooking"))
+                    .child(data.get(7))
+                    .setValue(db_bb);
 
-        Toast.makeText(this,"Your Order Booked Successfully",Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Your Order Booked Successfully", Toast.LENGTH_LONG).show();
 
-        Intent intent =  new Intent(this,BanquetBook4.class);
-        Bundle bundle = new Bundle();
-        bundle.putStringArrayList(KEY,data);
-        intent.putExtras(bundle);
-        startActivity(intent);
+            Intent intent = new Intent(this, BanquetBook4.class);
+            Bundle bundle = new Bundle();
+            bundle.putStringArrayList(KEY, data);
+            intent.putExtras(bundle);
+            startActivity(intent);
+        }
+        else
+            Toast.makeText(this,"Internet Not Available !! Please try Again.",Toast.LENGTH_SHORT).show();
+    }
+
+    public boolean isInternetAvailable() {
+
+        ConnectivityManager cm =
+                (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+
+        return activeNetwork != null &&
+                activeNetwork.isConnectedOrConnecting();
 
     }
 

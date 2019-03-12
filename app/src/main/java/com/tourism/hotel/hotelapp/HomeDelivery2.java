@@ -1,11 +1,17 @@
 package com.tourism.hotel.hotelapp;
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.firebase.FirebaseException;
@@ -25,6 +31,9 @@ public class HomeDelivery2 extends AppCompatActivity {
     ArrayList<String> data;
     FirebaseAuth hdAuth;
     public static String mVerificationId;
+
+    ProgressBar pbHd;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +50,9 @@ public class HomeDelivery2 extends AppCompatActivity {
 
         findViewById(R.id.btnVerify_HomeDelivery2).setOnClickListener(this :: onVerify);
         findViewById(R.id.btnCancel_HomeDelivery2).setOnClickListener(this :: onCancel);
+
+        pbHd = findViewById(R.id.pb_HomeDelivery2);
+        pbHd.setVisibility(View.INVISIBLE);
     }
 
     private void onCancel(View view) {
@@ -49,9 +61,51 @@ public class HomeDelivery2 extends AppCompatActivity {
     }
 
     private void onVerify(View view) {
+        pbHd.setVisibility(View.VISIBLE);
         verifyVerificationCode(((EditText)findViewById(R.id.txtOTP_HomeDelivery2)).getText().toString());
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.refresh) {
+            SendVerification();
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void SendVerification(){
+        if (isInternetAvailable())
+            sendVerificationCode(data.get(1));
+        else
+            mt("Internet not available !! Please Refresh the page.");
+    }
+
+    public boolean isInternetAvailable() {
+
+        ConnectivityManager cm =
+                (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+
+        return activeNetwork != null &&
+                activeNetwork.isConnectedOrConnecting();
+
+    }
 
     private PhoneAuthProvider.OnVerificationStateChangedCallbacks hdCallback = new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
         @Override
@@ -110,7 +164,7 @@ public class HomeDelivery2 extends AppCompatActivity {
                                 Log.d(TAG, "signInWithCredential:success");
 
                                 mt("Verification Successful");
-
+                                pbHd.setVisibility(View.INVISIBLE);
                                 Intent intent = new Intent(this,HomeDelivery3.class);
                                 Bundle bundle = new Bundle();
                                 bundle.putStringArrayList(KEY,data);

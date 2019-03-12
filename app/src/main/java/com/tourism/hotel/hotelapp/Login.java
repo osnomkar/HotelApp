@@ -105,7 +105,7 @@ public class Login extends AppCompatActivity {
 
             //Admin Login
             else if (txtEmail.equals(ADMIN) && txtPassword.equals(ADMIN_PASSWORD)) {
-                startActivity(new Intent(this, Home_admin.class));
+                startActivity(new Intent(this, admin.class));
                 clearText();
             }
             //Check for exiting username

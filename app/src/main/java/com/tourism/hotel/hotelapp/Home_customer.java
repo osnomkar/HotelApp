@@ -42,6 +42,13 @@ public class Home_customer extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onBackPressed() {
+
+        super.onBackPressed();
+        finish();
+    }
+
     //Receiving multiple activities after navigation
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {

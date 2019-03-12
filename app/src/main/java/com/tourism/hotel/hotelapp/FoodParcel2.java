@@ -1,10 +1,18 @@
 package com.tourism.hotel.hotelapp;
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.firebase.FirebaseException;
@@ -19,49 +27,78 @@ import java.util.concurrent.TimeUnit;
 public class FoodParcel2 extends AppCompatActivity {
 
     public static final String TAG = FoodParcel2.class.getCanonicalName(),
-                                KEY = "key";
-    FirebaseAuth tbAuth;
-    public static String mVerificationId;
+                                KEY = "keyFP2";
+    FirebaseAuth fpAuth;
+    public static String mVerificationId,code;
     ArrayList<String> data;
+
+    Button btnVerify, btnCancel;
+    ProgressBar pbfp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_food_parcel2);
 
-        /* Name
-         * MobileNo
-         * Date
-         * Time
-         * UserEmail
+        /*
+         * 0.Name
+         * 1.MobileNo
+         * 2.Date
+         * 3.Time
+         * 4.Food
+         * 5.User
          */
 
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
         assert bundle != null;
 
-        data = bundle.getStringArrayList(TableBooking1.KEY_DATA);
+        data = bundle.getStringArrayList(FoodParcel1.KEY_DATA);
 
         assert data != null:"Phone Number not recieved";
-        sendVerificationCode(data.get(1));
 
-        tbAuth = FirebaseAuth.getInstance();
+        SendVerification();
 
+        fpAuth = FirebaseAuth.getInstance();
+
+        btnVerify = findViewById(R.id.btnVerify_FoodParcel2);
+        btnCancel = findViewById(R.id.btnCancel_FoodParcel2);
+        btnVerify.setOnClickListener(this :: onVerify);
+        btnCancel.setOnClickListener(this :: onCancel);
+
+        pbfp = findViewById(R.id.pb_FoodParcel2);
+        pbfp.setVisibility(View.INVISIBLE);
     }
 
-    private PhoneAuthProvider.OnVerificationStateChangedCallbacks tbCallback = new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
+    private void onCancel(View view) {
+
+        Intent intent = new Intent(this,Home_customer.class);
+        startActivityForResult(intent,202);
+    }
+
+    private void onVerify(View view) {
+
+        pbfp.setVisibility(View.VISIBLE);
+
+        if(isInternetAvailable())
+            verifyVerificationCode(code);
+        else
+            mt("Internet not available . Please try Again !!");
+    }
+
+    private PhoneAuthProvider.OnVerificationStateChangedCallbacks fpCallback = new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
         @Override
         public void onVerificationCompleted(PhoneAuthCredential phoneAuthCredential) {
 
             //Get coe by sms
-            String code = phoneAuthCredential.getSmsCode();
+            code = phoneAuthCredential.getSmsCode();
 
             Log.d(TAG, "PhoneAuthCredentials => "+phoneAuthCredential);
 
 
             if(code != null) {
-                ((EditText)findViewById(R.id.txtOTP_tableBooking2)).setText(code);
-                verifyVerificationCode(code);
+                ((EditText)findViewById(R.id.txtOTP_FoodParcel2)).setText(code);
+
             }
         }
 
@@ -86,7 +123,7 @@ public class FoodParcel2 extends AppCompatActivity {
                 60,
                 TimeUnit.SECONDS,
                 this,
-                tbCallback
+                fpCallback
         );
     }
 
@@ -99,7 +136,7 @@ public class FoodParcel2 extends AppCompatActivity {
     }
 
     public void signInWithPhoneAuthCredential(PhoneAuthCredential credential){
-        tbAuth.signInWithCredential(credential)
+        fpAuth.signInWithCredential(credential)
                 .addOnCompleteListener(this, task -> {
                             if (task.isSuccessful()) {
                                 // Sign in success, update UI with the signed-in user's information
@@ -107,6 +144,7 @@ public class FoodParcel2 extends AppCompatActivity {
 
                                 mt("Verification Successful");
 
+                                pbfp.setVisibility(View.INVISIBLE);
                                 Intent intent = new Intent(this,FoodParcel3.class);
                                 Bundle bundle = new Bundle();
                                 bundle.putStringArrayList(KEY,data);
@@ -127,7 +165,50 @@ public class FoodParcel2 extends AppCompatActivity {
 
                 );
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.refresh) {
+            SendVerification();
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
     public void mt(String msg){
         Toast.makeText(this,msg,Toast.LENGTH_LONG).show();
+    }
+
+    public boolean isInternetAvailable() {
+
+        ConnectivityManager cm =
+                (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+
+        return activeNetwork != null &&
+                activeNetwork.isConnectedOrConnecting();
+
+    }
+
+    private void SendVerification(){
+        if (isInternetAvailable())
+            sendVerificationCode(data.get(1));
+        else
+            mt("Internet not available !! Please Refresh the page.");
     }
 }

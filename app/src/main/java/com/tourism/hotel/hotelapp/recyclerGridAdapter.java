@@ -90,9 +90,9 @@ public class recyclerGridAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             //Passing UserName with Each Service
             Bundle bundle = new Bundle();
             bundle.putString("Key",UserEmail);
+            assert intent != null;
             intent.putExtras(bundle);
             context.startActivity(intent);
-
         }
     }
 }

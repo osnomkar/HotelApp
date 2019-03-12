@@ -24,7 +24,7 @@ import java.util.Set;
 
 public class FoodParcel1 extends AppCompatActivity {
 
-    //Design Stuff
+    //Init UI
     TextView txvShowDate, txvShowTime, txvShowFood;
     Button btnDate, btnTime, btnFood, btnSubmit, btnCancel;
     EditText txtName, txtMobileNo;
@@ -33,7 +33,7 @@ public class FoodParcel1 extends AppCompatActivity {
     Calendar calendar;
 
     //Getting User Inputs
-    String Name, MobileNo, Time, Date, UserEmail;
+    String Name, MobileNo, Time, Date, User;
 
     //Dialog for picking Date, Time, Food
     Dialog dialog;
@@ -45,12 +45,18 @@ public class FoodParcel1 extends AppCompatActivity {
     ArrayList<String> itemsSelected;
 
     public static final String TAG = FoodParcel1.class.getCanonicalName(),
-                                KEY_DATA = "keyData";
+                                KEY_DATA = "keyFP1";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_food_parcel1);
+
+        Intent intent = getIntent();
+        Bundle bundle = intent.getExtras();
+        //UserEmail
+        assert bundle != null;
+        User = bundle.getString("Key");
 
         txvShowDate = findViewById(R.id.txvShowDate_FoodParcel1);
         txvShowTime = findViewById(R.id.txvShowTime_FoodParcel1);
@@ -59,6 +65,8 @@ public class FoodParcel1 extends AppCompatActivity {
         btnDate = findViewById(R.id.btnDate_FoodParcel1);
         btnTime = findViewById(R.id.btnTime_FoodParcel1);
         btnFood = findViewById(R.id.btnFood_FoodParcel1);
+        btnSubmit = findViewById(R.id.btnSubmit_FoodParcel1);
+        btnCancel = findViewById(R.id.btnCancel_FoodParcel1);
 
         txtName = findViewById(R.id.txtName_FoodParcel1);
         txtMobileNo = findViewById(R.id.txtMobileNo_FoodParcel1);
@@ -68,6 +76,8 @@ public class FoodParcel1 extends AppCompatActivity {
         btnSubmit.setOnClickListener(this :: onSubmit);
         btnCancel.setOnClickListener(this :: onCancel);
         btnFood.setOnClickListener(this :: showFood);
+
+        itemsSelected = new ArrayList<>();
     }
 
     private void showFood(View view) {
@@ -123,35 +133,34 @@ public class FoodParcel1 extends AppCompatActivity {
 
         Name = txtName.getText().toString();
         MobileNo = txtMobileNo.getText().toString();
-
         String d = txvShowDate.getText().toString();
         String t = txvShowTime.getText().toString();
+        String f = txvShowFood.getText().toString();
 
         if(     Name.isEmpty() ||
                 MobileNo.isEmpty() ||
                 d.isEmpty() ||
-                t.isEmpty()
+                t.isEmpty() ||
+                f.isEmpty()
         )
             mt("All fields are mandatory");
         else {
-            Log.i(TAG, "NAME - " + Name +
-                    "MOBILE NO - " + MobileNo +
-                    "DATE - " + Date +
-                    "TIME - " + Time);
 
             ArrayList<String> data = new ArrayList<>();
             data.add(Name);
             data.add(MobileNo);
             data.add(Date);
             data.add(Time);
-            data.add(UserEmail);
+            data.add(f);
+            data.add(User);
 
             /*
-            * Name
-            * MobileNo
-            * Date
-            * Time
-            * UserEmail
+            * 0.Name
+            * 1.MobileNo
+            * 2.Date
+            * 3.Time
+            * 4.Food
+            * 5.User
             */
 
             Intent intent = new Intent(this,FoodParcel2.class);
@@ -164,7 +173,9 @@ public class FoodParcel1 extends AppCompatActivity {
     }
 
     private void onCancel(View view) {
-        startActivity(new Intent(this,Home_customer.class));
+
+        Intent intent = new Intent(this,Home_customer.class);
+        startActivityForResult(intent,201);
     }
 
     TimePickerDialog.OnTimeSetListener timeSetListener = new TimePickerDialog.OnTimeSetListener() {

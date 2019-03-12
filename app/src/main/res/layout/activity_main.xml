@@ -18,7 +18,14 @@
         android:text="@string/welcome"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.7"/>
+        android:layout_weight="0.2"/>
+
+        <ImageView
+            android:layout_weight="0.5"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:src="@mipmap/ic_hotellogo"/>
+
         <ProgressBar
             android:id="@+id/pb.Welcome"
             android:layout_width="match_parent"
@@ -26,13 +33,6 @@
             android:layout_weight="0.3"/>
     </LinearLayout>
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/flB.Welcome"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="30dp"
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/lyt.Welcome"
-        android:layout_alignParentEnd="true" />
+
 
 </RelativeLayout>

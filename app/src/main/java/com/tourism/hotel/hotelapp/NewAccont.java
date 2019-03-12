@@ -1,6 +1,9 @@
 package com.tourism.hotel.hotelapp;
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -81,23 +84,27 @@ public class NewAccont extends AppCompatActivity {
     //After getting details by Customer
     private void onSignUp(View view) {
 
+        if (isInternetAvailable()) {
 
-        String email = ((EditText) findViewById(R.id.txtEmail_NewAccount)).getText().toString();
-        String password = ((EditText) findViewById(R.id.txtPassword_NewAccount)).getText().toString();
+            String email = ((EditText) findViewById(R.id.txtEmail_NewAccount)).getText().toString();
+            String password = ((EditText) findViewById(R.id.txtPassword_NewAccount)).getText().toString();
 
-        if (email.isEmpty())
-            mt("Email cannot be empty");
-        else if (password.isEmpty())
-            mt("Password cannot be empty");
-        else if(Userlist.contains(email))
-            mt("Username already used !!! Try New One");
-        else {
-            writeNewUser(email, password);
-            mt("Account Created Successfully");
+            if (email.isEmpty())
+                mt("Email cannot be empty");
+            else if (password.isEmpty())
+                mt("Password cannot be empty");
+            else if (Userlist.contains(email))
+                mt("Username already used !!! Try New One");
+            else {
+                writeNewUser(email, password);
+                mt("Account Created Successfully");
 
-            Intent intent = new Intent(NewAccont.this, Login.class);
-            startActivity(intent);
+                Intent intent = new Intent(NewAccont.this, Login.class);
+                startActivity(intent);
+            }
         }
+        else
+            mt("Internet not available. Please try again!!");
     }
 
     //Write data into firebase realtime database
@@ -106,6 +113,18 @@ public class NewAccont extends AppCompatActivity {
         (databaseReference.child("users"))
                 .child(email)
                 .setValue(password);
+    }
+
+    public boolean isInternetAvailable() {
+
+        ConnectivityManager cm =
+                (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+
+        return activeNetwork != null &&
+                activeNetwork.isConnectedOrConnecting();
+
     }
 
     //Toast Dialog

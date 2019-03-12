@@ -33,12 +33,19 @@
         android:hint="@string/OTP"
         android:textSize="45sp" />
 
-    <Button
-        android:id="@+id/btnVerify.HomeDelivery2"
+    <ProgressBar
+        android:id="@+id/pb.HomeDelivery2"
         android:layout_below="@+id/txtOTP.HomeDelivery2"
         android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:tag="Verifying" />
+
+    <Button
+        android:id="@+id/btnVerify.HomeDelivery2"
+        android:layout_below="@+id/pb.HomeDelivery2"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="10dp"
         android:layout_marginHorizontal="20dp"
         android:text="@string/verify"
         android:textSize="35sp" />

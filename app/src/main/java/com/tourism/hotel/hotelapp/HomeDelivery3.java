@@ -1,6 +1,9 @@
 package com.tourism.hotel.hotelapp;
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -82,33 +85,53 @@ public class HomeDelivery3 extends AppCompatActivity {
 
     private void onSave(View view) {
 
-        database_HomeDelivery db_hd = new database_HomeDelivery(
-                data.get(0),
-                data.get(1),
-                data.get(2),
-                data.get(3),
-                data.get(4),
-                data.get(5),
-                data.get(6),
-                data.get(7),
-                data.get(8));
+        if (isInternetAvailable()) {
+            database_HomeDelivery db_hd = new database_HomeDelivery(
+                    data.get(0),
+                    data.get(1),
+                    data.get(2),
+                    data.get(3),
+                    data.get(4),
+                    data.get(5),
+                    data.get(6),
+                    data.get(7),
+                    data.get(8));
 
-        (databaseReference.child("HomeDelivery"))
-                .child(data.get(8))
-                .setValue(db_hd);
+            (databaseReference.child("HomeDelivery"))
+                    .child(data.get(8))
+                    .setValue(db_hd);
 
-        Toast.makeText(this,"Your Order Booked Successfully",Toast.LENGTH_LONG).show();
+            mt("Your Order Booked Successfully");
 
-        Intent intent =  new Intent(this,HomeDelivery4.class);
-        Bundle bundle = new Bundle();
-        bundle.putStringArrayList(KEY,data);
-        intent.putExtras(bundle);
-        startActivity(intent);
+            Intent intent = new Intent(this, HomeDelivery4.class);
+            Bundle bundle = new Bundle();
+            bundle.putStringArrayList(KEY, data);
+            intent.putExtras(bundle);
+            startActivity(intent);
+        }
+        else
+            mt("Internet not available . Please try again !!");
+    }
+
+    private void mt(String msg){
+        Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
     }
 
     private void onCancel(View view) {
         Intent intent = new Intent(this, Home_customer.class);
         startActivityForResult(intent,303);
+    }
+
+    public boolean isInternetAvailable() {
+
+        ConnectivityManager cm =
+                (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+
+        return activeNetwork != null &&
+                activeNetwork.isConnectedOrConnecting();
+
     }
 
     public int generateRandom() {

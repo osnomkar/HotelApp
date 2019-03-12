@@ -56,6 +56,11 @@
         <activity android:name=".BanquetBook1" />
         <activity android:name=".Home_admin" />
 
+        <activity
+            android:name=".admin"
+            android:theme="@style/AppTheme.NoActionBar"
+            />
+
         <meta-data
             android:name="instamojo.orderauth.url"
             android:value="https://shriportfoliotk.000webhostapp.com/access_token.php" />

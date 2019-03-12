@@ -7,7 +7,8 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.design.widget.FloatingActionButton;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.Toast;
@@ -21,27 +22,39 @@ public class Welcome extends  Activity {
     //Progress bar for Getting internet connection
     ProgressBar pb;
 
-    //For refreshing after internet connection
-    FloatingActionButton flB;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         pb = findViewById(R.id.pb_Welcome);
-        flB = findViewById(R.id.flB_Welcome);
-        flB.setOnClickListener(this :: onRefresh);
-        flB.setActivated(false);
-        flB.hide();
+
 
         myContent();
 
     }
 
-    //On press of refresh button
-    private void onRefresh(View view) {
-        myContent();
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.refresh) {
+            myContent();
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
     //actual contents in welcome page
@@ -52,10 +65,7 @@ public class Welcome extends  Activity {
 
             new Handler().postDelayed(new Runnable() {
 
-                /*
-                 * Showing splash screen with a timer. This will be useful when you
-                 * want to show case your app logo / company
-                 */
+                //Showing splash screen with a timer.
 
                 @Override
                 public void run() {
@@ -72,8 +82,6 @@ public class Welcome extends  Activity {
         }
         else {
             mt("Internet Not Available. Please Start Internet");
-            flB.setActivated(true);
-            flB.show();
         }
     }
 

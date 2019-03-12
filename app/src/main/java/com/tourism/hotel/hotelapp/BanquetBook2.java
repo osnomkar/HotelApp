@@ -1,9 +1,14 @@
 package com.tourism.hotel.hotelapp;
 
+import android.content.Context;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -53,9 +58,9 @@ public class BanquetBook2 extends AppCompatActivity {
 
         assert data != null:"Phone Number not recieved";
 
-        sendVerificationCode(data.get(1));
-
         bbAuth = FirebaseAuth.getInstance();
+
+        SendVerification();
 
         btnVerify = findViewById(R.id.btnVerify_BanquetBook2);
         btnVerify.setOnClickListener(this :: onVerify);
@@ -70,12 +75,45 @@ public class BanquetBook2 extends AppCompatActivity {
 
     private void onCancel(View view) {
         Intent intent = new Intent(this,Home_customer.class);
-        startActivityForResult(intent,102);
+        startActivityForResult(intent,402);
     }
 
     private void onVerify(View view) {
         pbBb.setVisibility(View.VISIBLE);
-        verifyVerificationCode(code);
+        if(isInternetAvailable())
+            verifyVerificationCode(code);
+        else
+            mt("Internet not available . Please try again !!");
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.refresh) {
+            SendVerification();
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void SendVerification(){
+        if (isInternetAvailable())
+            sendVerificationCode(data.get(1));
+        else
+            mt("Internet not available !! Please Refresh the page.");
     }
 
     private void sendVerificationCode(String mobile){
@@ -154,6 +192,17 @@ public class BanquetBook2 extends AppCompatActivity {
                 );
     }
 
+    public boolean isInternetAvailable() {
+
+        ConnectivityManager cm =
+                (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+
+        return activeNetwork != null &&
+                activeNetwork.isConnectedOrConnecting();
+
+    }
 
     public void mt(String msg){
         Toast.makeText(this,msg,Toast.LENGTH_LONG).show();
